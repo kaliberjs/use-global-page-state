@@ -1,5 +1,13 @@
-import { hello }  from '@kaliber/library'
+import { ServerSideComponent } from '/features/pageOnly/ServerSideComponent'
+import ClientSideComponentA from '/features/pageOnly/ClientSideComponentA.universal'
+import ClientSideComponentB from '/features/pageOnly/ClientSideComponentB.universal'
 
 export default function App() {
-  return <div>{hello()}</div>
+  return (
+    <main>
+      <ClientSideComponentA />
+      <ServerSideComponent />
+      <ClientSideComponentB />
+    </main>
+  )
 }
