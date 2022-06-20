@@ -15,30 +15,65 @@
 - Send everybody an email to introduce them to your library!
 
 # Library title
-Short description.
+Module based state that allows communication between different client React 'islands' on the same page.
 
 ## Motivation
-Optionally add a bit of text describing why this library exists.
+With @kaliber/build it has become easy to serve a React page component server side and only mount components client side when they contain interactivity. The downside of this, is that these interactive parts live on theire own isolated islands: they can't easily communicate. This library introduces the `useGlobalPageState` hook, which works comparable to React's `useState`, but syncs state between uses of this hook that provide the same id.
 
 ## Installation
 
 ```
-yarn add @kaliber/library
+yarn add @kaliber/use-global-page-state
 ```
 
 ## Usage
-Short example. If your library has multiple ways to use it, show the most used one and refer to `/example` for further examples.
 
+*Home.js*
 ```jsx
-import { hello } from 'library'
+import { ServerSideComponent } from '/features/pageOnly/ServerSideComponent'
+import ClientSideComponentA from '/features/pageOnly/ClientSideComponentA.universal'
+import ClientSideComponentB from '/features/pageOnly/ClientSideComponentB.universal'
 
-function Component() {
-  return <div>{hello()}</div>
+export function Home() {
+  return (
+    <main>
+      <ClientSideComponentA />
+      <ServerSideComponent />
+      <ClientSideComponentB />
+    </main>
+  )
 }
 ```
 
-# Reference
-Optionally add a reference, if your library needs it.
+*ClientSideComponentA.js*
+```jsx
+import { useGlobalPageState } from '@kaliber/use-global-page-state'
+
+export function ClientSideComponentA() {
+  const [state, setState] = useGlobalPageState('unique-id')
+  return (
+    <section>
+      {/* ... */}
+    </section>
+  )
+}
+```
+
+*ClientSideComponentB.js*
+```jsx
+import { useGlobalPageState } from '@kaliber/use-global-page-state'
+
+export function ClientSideComponentA() {
+  const [state, setState] = useGlobalPageState('unique-id')
+  return (
+    <section>
+      {/* ... */}
+    </section>
+  )
+}
+```
+
+---
 
 ![](https://media.giphy.com/media/find-a-good-gif/giphy.gif)
 
