@@ -21,5 +21,14 @@
   "private": false,
   "license": "MIT",
   "description": "Module based state that allows communication between different client React 'islands' on the same page",
-  "repository": "https://github.com/kaliberjs/use-global-page-state.git"
+  "repository": "https://github.com/kaliberjs/use-global-page-state.git",
+  "scripts": {
+    "postinstall": "[ -d ./scripts -a -f ./scripts/install-peer-dependencies-for-typescript.js ] && node ./scripts/install-peer-dependencies-for-typescript.js || true"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@kaliber/eslint-plugin": "^1.0.0"
+  }
 }

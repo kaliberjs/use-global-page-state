@@ -4,29 +4,23 @@
   },
   "include": [
     "./src/**/*",
-    "./node_modules/**.*",
-    "./types/**/*"
+    "./scripts/**/*"
   ],
   "compilerOptions": {
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "allowUmdGlobalAccess": true,
     "lib": [
       "dom",
       "esnext"
     ],
-    "jsx": "react",
-    "baseUrl": ".",
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
+    "baseUrl": ".",
     "paths": {
-      "/*?universal": [
-        "src/*"
-      ],
-      "/*": [
-        "src/*"
-      ]
+      "*": ["./typescript/node_modules/*"]
     }
   }
 }

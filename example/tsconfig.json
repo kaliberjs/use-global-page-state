@@ -1,0 +1,17 @@
+{
+  "include": [
+    "config/**/*",
+    "src/**/*",
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "allowUmdGlobalAccess": true,
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "/*": ["src/*"]
+    }
+  }
+}
